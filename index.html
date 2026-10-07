@@ -61,102 +61,127 @@
         background: #f5f5f5;
     }
 
-    .aviso {
+    /* Pantalla previa de verificación reCAPTCHA */
+    #bloqueo-captcha {
         text-align: center;
-        margin-top: 30px;
-        color: #777;
-        font-size: 12px;
+        margin-top: 50px;
     }
 
-    /* Estilos para el contenedor del reCAPTCHA */
     .recaptcha-box {
-        display: flex;
-        justify-content: center;
+        display: inline-block;
         margin-top: 20px;
     }
+
+    /* Contenido oculto por defecto */
+    #contenido-pagina {
+        display: none;
+    }
 </style>
+
+<script>
+    // Función que se ejecuta automáticamente cuando el usuario resuelve el reCAPTCHA
+    function captchaResuelto(token) {
+        if (token) {
+            document.getElementById('bloqueo-captcha').style.display = 'none';
+            document.getElementById('contenido-pagina').style.display = 'block';
+        }
+    }
+</script>
 </head>
 
 <body>
 
 <div class="contenedor">
 
-    <div class="logo-container">
-        <img src="catura.JPG" alt="Logo">
+    <!-- 1. PANTALLA INICIAL: LOGO Y CAPTCHA -->
+    <div id="bloqueo-captcha">
+        <div class="logo-container">
+            <img src="catura.JPG" alt="Logo">
+        </div>
+        <p style="color: #555; font-size: 14px;">Por favor, completa la verificación para acceder a la información.</p>
+        
+        <div class="recaptcha-box">
+            <div class="g-recaptcha" 
+                 data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm" 
+                 data-callback="captchaResuelto">
+            </div>
+        </div>
     </div>
 
-    <div class="titulo">
-        DETALLE DE LA INFORMACIÓN
-    </div>
+    <!-- 2. PANTALLA SECUNDARIA: CONTENIDO DE LA PÁGINA -->
+    <div id="contenido-pagina">
+        <div class="logo-container">
+            <img src="catura.JPG" alt="Logo">
+        </div>
 
-    <table>
-        <tr>
-            <td colspan="2" class="encabezado">
-                DATOS DEL CONTRIBUYENTE
-            </td>
-        </tr>
+        <div class="titulo">
+            DETALLE DE LA INFORMACIÓN
+        </div>
 
-        <tr>
-            <td class="campo">NIT</td>
-            <td>53372972</td>
-        </tr>
+        <table>
+            <tr>
+                <td colspan="2" class="encabezado">
+                    DATOS DEL CONTRIBUYENTE
+                </td>
+            </tr>
 
-        <tr>
-            <td class="campo">Nombre</td>
-            <td>CUC RAMIREZ, SERGIO ESTUARDO</td>
-        </tr>
+            <tr>
+                <td class="campo">NIT</td>
+                <td>53372972</td>
+            </tr>
 
-        <tr>
-            <td colspan="2" class="encabezado">
-                DETALLE DEL FORMULARIO
-            </td>
-        </tr>
+            <tr>
+                <td class="campo">Nombre</td>
+                <td>CUC RAMIREZ, SERGIO ESTUARDO</td>
+            </tr>
 
-        <tr>
-            <td class="campo">No. del formulario</td>
-            <td>719030879837943</td>
-        </tr>
+            <tr>
+                <td colspan="2" class="encabezado">
+                    DETALLE DEL FORMULARIO
+                </td>
+            </tr>
 
-        <tr>
-            <td class="campo">Banco</td>
-            <td>BANCO DE DESARROLLO RURAL SOCIEDAD ANÓNIMA</td>
-        </tr>
+            <tr>
+                <td class="campo">No. del formulario</td>
+                <td>719030879837943</td>
+            </tr>
 
-        <tr>
-            <td class="campo">Fecha de Pago</td>
-            <td>14/04/2022</td>
-        </tr>
+            <tr>
+                <td class="campo">Banco</td>
+                <td>BANCO DE DESARROLLO RURAL SOCIEDAD ANÓNIMA</td>
+            </tr>
 
-        <tr>
-            <td class="campo">Monto</td>
-            <td>Q.100.00</td>
-        </tr>
+            <tr>
+                <td class="campo">Fecha de Pago</td>
+                <td>14/04/2022</td>
+            </tr>
 
-        <tr>
-            <td colspan="2" class="encabezado">
-                DETALLE DEL TÍTULO
-            </td>
-        </tr>
+            <tr>
+                <td class="campo">Monto</td>
+                <td>Q.100.00</td>
+            </tr>
 
-        <tr>
-            <td class="campo">Universidad</td>
-            <td>Universidad Rafael Landívar</td>
-        </tr>
+            <tr>
+                <td colspan="2" class="encabezado">
+                    DETALLE DEL TÍTULO
+                </td>
+            </tr>
 
-        <tr>
-            <td class="campo">Tipo de título</td>
-            <td>Título Universitario</td>
-        </tr>
+            <tr>
+                <td class="campo">Universidad</td>
+                <td>Universidad Rafael Landívar</td>
+            </tr>
 
-        <tr>
-            <td class="campo">Nombre de título</td>
-            <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
-        </tr>
-    </table>
+            <tr>
+                <td class="campo">Tipo de título</td>
+                <td>Título Universitario</td>
+            </tr>
 
-    <!-- Widget de reCAPTCHA -->
-    <div class="recaptcha-box">
-        <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
+            <tr>
+                <td class="campo">Nombre de título</td>
+                <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
+            </tr>
+        </table>
     </div>
 
 </div>
