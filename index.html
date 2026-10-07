@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verificación reCAPTCHA</title>
-  
-  <!-- Script oficial de Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <style>
@@ -24,7 +22,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       text-align: center;
     }
     .g-recaptcha {
@@ -45,34 +43,44 @@
     button:hover {
       background-color: #003d80;
     }
+    /* El contenido estará oculto por defecto */
+    #contenidoProtegido {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="contenedor">
-    <h2>Confirmación de Seguridad</h2>
-    <p>Por favor, completa la verificación para continuar:</p>
+    <!-- Bloque de verificación -->
+    <div id="bloqueCaptcha">
+      <h2>Confirmación de Seguridad</h2>
+      <p>Por favor, completa la verificación para continuar:</p>
 
-    <form id="formularioCaptcha">
-      <!-- Casilla del reCAPTCHA con tu clave v2 -->
-      <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
+      <form id="formularioCaptcha">
+        <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
 
-      <!-- Botón de envío -->
-      <button type="submit">Enviar</button>
-    </form>
+    <!-- Contenido que se mostrará tras verificar -->
+    <div id="contenidoProtegido">
+      <h2>¡Bienvenido!</h2>
+      <p>Aquí va la información o contenido de tu página web que deseas mostrar.</p>
+    </div>
   </div>
 
   <script>
     document.getElementById("formularioCaptcha").addEventListener("submit", function(event) {
       event.preventDefault();
-
       var captchaResponse = grecaptcha.getResponse();
 
       if (captchaResponse.length === 0) {
         alert("Por favor, marca la casilla 'No soy un robot' antes de continuar.");
       } else {
-        // Cambia la dirección entre comillas por la página a la que quieres redirigir:
-        window.location.href = "https://farm4.sat.gob.gt";
+        // Oculta el captcha y muestra el contenido oculto en la misma pantalla
+        document.getElementById("bloqueCaptcha").style.display = "none";
+        document.getElementById("contenidoProtegido").style.display = "block";
       }
     });
   </script>
