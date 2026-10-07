@@ -1,151 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>detalle de la razón de pago</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación reCAPTCHA</title>
+  
+  <!-- Script oficial de Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<style>
+  <style>
     body {
-        font-family: Arial, sans-serif;
-        background: white;
-        margin: 0;
-        padding: 40px;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
     }
-
     .contenedor {
-        width: 580px;
-        margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
     }
-
-    .logo-encabezado {
-        text-align: center;
-        margin-bottom: 20px;
+    .g-recaptcha {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
     }
-
-    .logo-encabezado img {
-        max-width: 100%;
-        height: auto;
+    button {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
     }
-
-    .titulo {
-        text-align: center;
-        color: #287a9b;
-        font-size: 18px;
-        margin-bottom: 8px;
+    button:hover {
+      background-color: #003d80;
     }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-    }
-
-    td {
-        border: 1px solid #999;
-        padding: 4px;
-    }
-
-    .encabezado {
-        background: #087caf;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .campo {
-        width: 32%;
-        background: #f5f5f5;
-    }
-
-    .aviso {
-        text-align: center;
-        margin-top: 30px;
-        color: #777;
-        font-size: 12px;
-    }
-</style>
+  </style>
 </head>
-
 <body>
 
-<div class="contenedor">
+  <div class="contenedor">
+    <h2>Confirmación de Seguridad</h2>
+    <p>Por favor, completa la verificación para continuar:</p>
 
-    <!-- Imagen de encabezado / Logo -->
-    <div class="logo-encabezado">
-        <img src="captura.JPG" alt="Logo de la entidad">
-    </div>
+    <form id="formularioCaptcha">
+      <!-- Casilla del reCAPTCHA con tu clave de sitio -->
+      <div class="g-recaptcha" data-sitekey="6LfAB-QtAAAAAJbyugkuWxo0JlOZMVqto36lPKFx"></div>
 
-    <div class="titulo">
-        DETALLE DE LA INFORMACIÓN
-    </div>
+      <!-- Botón de envío -->
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
 
-    <table>
-        <tr>
-            <td colspan="2" class="encabezado">
-                DATOS DEL CONTRIBUYENTE
-            </td>
-        </tr>
+  <script>
+    document.getElementById("formularioCaptcha").addEventListener("submit", function(event) {
+      // Detener el envío por defecto para verificar el Captcha
+      event.preventDefault();
 
-        <tr>
-            <td class="campo">NIT</td>
-            <td>53372972</td>
-        </tr>
+      // Obtener la respuesta del reCAPTCHA
+      var captchaResponse = grecaptcha.getResponse();
 
-        <tr>
-            <td class="campo">Nombre</td>
-            <td>CUC RAMIREZ, SERGIO ESTUARDO</td>
-        </tr>
-
-        <tr>
-            <td colspan="2" class="encabezado">
-                DETALLE DEL FORMULARIO
-            </td>
-        </tr>
-
-        <tr>
-            <td class="campo">No. del formulario</td>
-            <td>719030879837943</td>
-        </tr>
-
-        <tr>
-            <td class="campo">Banco</td>
-            <td>BANCO DE DESARROLLO RURAL, SOCIEDAD ANÓNIMA</td>
-        </tr>
-
-        <tr>
-            <td class="campo">Fecha de Pago</td>
-            <td>14/04/2022</td>
-        </tr>
-
-        <tr>
-            <td class="campo">Monto</td>
-            <td>Q.100.00</td>
-        </tr>
-
-        <tr>
-            <td colspan="2" class="encabezado">
-                DETALLE DEL TÍTULO
-            </td>
-        </tr>
-
-        <tr>
-            <td class="campo">Universidad</td>
-            <td>Universidad Rafael Landívar</td>
-        </tr>
-
-        <tr>
-            <td class="campo">Tipo de título</td>
-            <td>Título Universitario</td>
-        </tr>
-
-        <tr>
-            <td class="campo">Nombre de título</td>
-            <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
-        </tr>
-    </table>
-
-</div>
+      if (captchaResponse.length === 0) {
+        // Si la respuesta está vacía, el usuario no ha marcado la casilla
+        alert("Por favor, marca la casilla 'No soy un robot' antes de continuar.");
+      } else {
+        // Si el captcha fue completado correctamente
+        alert("¡Verificación exitosa! Puedes continuar.");
+        
+        // Aquí puedes agregar la acción que deseas ejecutar o redirigir:
+        // this.submit();
+      }
+    });
+  </script>
 
 </body>
 </html>
