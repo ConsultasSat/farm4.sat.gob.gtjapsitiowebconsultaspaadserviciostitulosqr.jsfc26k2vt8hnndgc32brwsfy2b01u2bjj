@@ -3,33 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificación reCAPTCHA</title>
+  <title>Verificación de Datos</title>
+
+  <!-- Script oficial de Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      margin: 0;
     }
-    .contenedor {
+
+    .tarjeta {
       background: white;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 500px;
+      max-width: 600px;
+    }
+
+    /* Estilos del CAPTCHA inicial */
+    #seccionCaptcha {
       text-align: center;
     }
+
     .g-recaptcha {
       display: flex;
       justify-content: center;
       margin: 20px 0;
     }
+
     button {
       background-color: #0056b3;
       color: white;
@@ -40,47 +50,96 @@
       cursor: pointer;
       width: 100%;
     }
+
     button:hover {
       background-color: #003d80;
     }
-    /* El contenido estará oculto por defecto */
-    #contenidoProtegido {
+
+    /* Estilos del contenido principal (oculto al inicio) */
+    #contenidoPrincipal {
       display: none;
+    }
+
+    .header-logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header-logo img {
+      max-width: 200px; /* Ajusta el ancho del logo aquí */
+      height: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td.campo {
+      font-weight: bold;
+      color: #333;
+      width: 40%;
     }
   </style>
 </head>
 <body>
 
-  <div class="contenedor">
-    <!-- Bloque de verificación -->
-    <div id="bloqueCaptcha">
+  <div class="tarjeta">
+    <!-- PANTALLA 1: VERIFICACIÓN CAPTCHA -->
+    <div id="seccionCaptcha">
       <h2>Confirmación de Seguridad</h2>
       <p>Por favor, completa la verificación para continuar:</p>
 
       <form id="formularioCaptcha">
+        <!-- Tu clave v2 -->
         <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
         <button type="submit">Enviar</button>
       </form>
     </div>
 
-    <!-- Contenido que se mostrará tras verificar -->
-    <div id="contenidoProtegido">
-      <h2>¡Bienvenido!</h2>
-      <p>Aquí va la información o contenido de tu página web que deseas mostrar.</p>
+    <!-- PANTALLA 2: CONTENIDO DE TU PÁGINA CON EL LOGO -->
+    <div id="contenidoPrincipal">
+      <!-- Encabezado con Logo (Nombre actualizado) -->
+      <div class="header-logo">
+        <img src="captura.JPG" alt="Logo de la entidad">
+      </div>
+
+      <!-- Tabla de Datos -->
+      <table>
+        <tr>
+          <td class="campo">Universidad</td>
+          <td>Universidad Rafael Landívar</td>
+        </tr>
+        <tr>
+          <td class="campo">Tipo de título</td>
+          <td>Título Universitario</td>
+        </tr>
+        <tr>
+          <td class="campo">Nombre de título</td>
+          <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
+        </tr>
+      </table>
     </div>
   </div>
 
   <script>
     document.getElementById("formularioCaptcha").addEventListener("submit", function(event) {
       event.preventDefault();
+
       var captchaResponse = grecaptcha.getResponse();
 
       if (captchaResponse.length === 0) {
         alert("Por favor, marca la casilla 'No soy un robot' antes de continuar.");
       } else {
-        // Oculta el captcha y muestra el contenido oculto en la misma pantalla
-        document.getElementById("bloqueCaptcha").style.display = "none";
-        document.getElementById("contenidoProtegido").style.display = "block";
+        // Oculta la casilla del Captcha y muestra la página con la tabla y el logo
+        document.getElementById("seccionCaptcha").style.display = "none";
+        document.getElementById("contenidoPrincipal").style.display = "block";
       }
     });
   </script>
