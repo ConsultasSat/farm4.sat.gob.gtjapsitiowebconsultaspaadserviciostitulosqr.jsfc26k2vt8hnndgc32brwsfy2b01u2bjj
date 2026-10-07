@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detalle de la razón de pago</title>
+<title>Detalle de información</title>
+
+<!-- API de Google reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
     body {
@@ -64,6 +67,13 @@
         color: #777;
         font-size: 12px;
     }
+
+    /* Estilos para el contenedor del reCAPTCHA */
+    .recaptcha-box {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 </style>
 </head>
 
@@ -72,7 +82,7 @@
 <div class="contenedor">
 
     <div class="logo-container">
-        <img src="captura.JPG" alt="Logo">
+        <img src="catura.JPG" alt="Logo">
     </div>
 
     <div class="titulo">
@@ -109,7 +119,7 @@
 
         <tr>
             <td class="campo">Banco</td>
-            <td>BANCO DE DESARROLLO RURAL, SOCIEDAD ANÓNIMA</td>
+            <td>BANCO DE DESARROLLO RURAL SOCIEDAD ANÓNIMA</td>
         </tr>
 
         <tr>
@@ -143,6 +153,11 @@
             <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
         </tr>
     </table>
+
+    <!-- Widget de reCAPTCHA -->
+    <div class="recaptcha-box">
+        <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
+    </div>
 
 </div>
 
