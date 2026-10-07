@@ -6,100 +6,63 @@
 <title>Detalle de información</title>
 
 <style>
-    :root {
-        --color-primary: #087caf;
-        --color-title: #287a9b;
-        --color-bg-body: #f4f7f9;
-        --color-bg-card: #ffffff;
-        --color-bg-label: #f8fafc;
-        --color-border: #e2e8f0;
-        --color-text-main: #334155;
-        --color-text-muted: #64748b;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
     body {
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        background-color: var(--color-bg-body);
-        color: var(--color-text-main);
+        font-family: Arial, sans-serif;
+        background: white;
         margin: 0;
-        padding: 40px 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        padding: 40px;
     }
 
     .contenedor {
-        width: 100%;
-        max-width: 600px;
-        background: var(--color-bg-card);
-        border-radius: 12px;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-        padding: 32px;
+        width: 580px;
+        margin: auto;
     }
 
     .logo-container {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
-    .logo {
-        max-width: 180px; /* Puedes ajustar este valor según el tamaño deseado */
+    .logo-container img {
+        max-width: 200px;
         height: auto;
-        display: inline-block;
     }
 
     .titulo {
         text-align: center;
-        color: var(--color-title);
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        margin-bottom: 24px;
-        text-transform: uppercase;
+        color: #287a9b;
+        font-size: 18px;
+        margin-bottom: 8px;
     }
 
     table {
         width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
+        border-collapse: collapse;
         font-size: 14px;
-        border-radius: 8px;
-        overflow: hidden;
-        border: 1px solid var(--color-border);
     }
 
     td {
-        padding: 10px 14px;
-        border-bottom: 1px solid var(--color-border);
-        vertical-align: middle;
-    }
-
-    tr:last-child td {
-        border-bottom: none;
+        border: 1px solid #999;
+        padding: 4px;
     }
 
     .encabezado {
-        background: var(--color-primary);
+        background: #087caf;
         color: white;
-        text-align: left;
-        font-weight: 600;
-        font-size: 13px;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        padding: 10px 14px;
+        text-align: center;
+        font-weight: bold;
     }
 
     .campo {
-        width: 35%;
-        background: var(--color-bg-label);
-        font-weight: 600;
-        color: var(--color-text-muted);
-        border-right: 1px solid var(--color-border);
+        width: 32%;
+        background: #f5f5f5;
+    }
+
+    .aviso {
+        text-align: center;
+        margin-top: 30px;
+        color: #777;
+        font-size: 12px;
     }
 </style>
 </head>
@@ -108,19 +71,18 @@
 
 <div class="contenedor">
 
-    <!-- Logo centrado -->
     <div class="logo-container">
-        <img src="catura.JPG" alt="Logo" class="logo">
+        <img src="catura.JPG" alt="Logo">
     </div>
 
     <div class="titulo">
-        Detalle de la Información
+        DETALLE DE LA INFORMACIÓN
     </div>
 
     <table>
         <tr>
             <td colspan="2" class="encabezado">
-                Datos del Contribuyente
+                DATOS DEL CONTRIBUYENTE
             </td>
         </tr>
 
@@ -136,7 +98,7 @@
 
         <tr>
             <td colspan="2" class="encabezado">
-                Detalle del Formulario
+                DETALLE DEL FORMULARIO
             </td>
         </tr>
 
@@ -162,7 +124,7 @@
 
         <tr>
             <td colspan="2" class="encabezado">
-                Detalle del Título
+                DETALLE DEL TÍTULO
             </td>
         </tr>
 
