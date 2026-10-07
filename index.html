@@ -1,163 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificación de Datos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle de información</title>
 
-  <!-- Script oficial de Google reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+    :root {
+        --color-primary: #087caf;
+        --color-title: #287a9b;
+        --color-bg-body: #f4f7f9;
+        --color-bg-card: #ffffff;
+        --color-bg-label: #f8fafc;
+        --color-border: #e2e8f0;
+        --color-text-main: #334155;
+        --color-text-muted: #64748b;
+    }
 
-  <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: var(--color-bg-body);
+        color: var(--color-text-main);
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
-    .tarjeta {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 650px;
+    .contenedor {
+        width: 100%;
+        max-width: 600px;
+        background: var(--color-bg-card);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        padding: 32px;
     }
 
-    /* Estilos del CAPTCHA inicial */
-    #seccionCaptcha {
-      text-align: center;
+    .logo-container {
+        text-align: center;
+        margin-bottom: 20px;
     }
 
-    .g-recaptcha {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
+    .logo {
+        max-width: 180px; /* Puedes ajustar este valor según el tamaño deseado */
+        height: auto;
+        display: inline-block;
     }
 
-    button {
-      background-color: #0056b3;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    button:hover {
-      background-color: #003d80;
-    }
-
-    /* Estilos del contenido principal (oculto al inicio) */
-    #contenidoPrincipal {
-      display: none;
-    }
-
-    .header-logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .header-logo img {
-      max-width: 220px;
-      height: auto;
+    .titulo {
+        text-align: center;
+        color: var(--color-title);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
     }
 
     table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 14px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--color-border);
     }
 
     td {
-      padding: 12px 10px;
-      border-bottom: 1px solid #e0e0e0;
-      font-size: 15px;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--color-border);
+        vertical-align: middle;
     }
 
-    td.campo {
-      font-weight: bold;
-      color: #333;
-      width: 40%;
+    tr:last-child td {
+        border-bottom: none;
     }
-  </style>
+
+    .encabezado {
+        background: var(--color-primary);
+        color: white;
+        text-align: left;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 10px 14px;
+    }
+
+    .campo {
+        width: 35%;
+        background: var(--color-bg-label);
+        font-weight: 600;
+        color: var(--color-text-muted);
+        border-right: 1px solid var(--color-border);
+    }
+</style>
 </head>
+
 <body>
 
-  <div class="tarjeta">
-    <!-- PANTALLA 1: VERIFICACIÓN CAPTCHA -->
-    <div id="seccionCaptcha">
-      <h2>Confirmación de Seguridad</h2>
-      <p>Por favor, completa la verificación para continuar:</p>
+<div class="contenedor">
 
-      <form id="formularioCaptcha">
-        <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
-        <button type="submit">Enviar</button>
-      </form>
+    <!-- Logo centrado -->
+    <div class="logo-container">
+        <img src="catura.JPG" alt="Logo" class="logo">
     </div>
 
-    <!-- PANTALLA 2: CONTENIDO COMPLETO -->
-    <div id="contenidoPrincipal">
-      <!-- Encabezado con Logo -->
-      <div class="header-logo">
-        <img src="captura.JPG" alt="Logo de la entidad">
-      </div>
-
-      <!-- Tabla Completa de Datos -->
-      <table>
-        <tr>
-          <td class="campo">CUI / DPI</td>
-          <td>COMPLETAR_DPI</td>
-        </tr>
-        <tr>
-          <td class="campo">Nombre del Profesional</td>
-          <td>COMPLETAR_NOMBRE</td>
-        </tr>
-        <tr>
-          <td class="campo">Universidad</td>
-          <td>Universidad Rafael Landívar</td>
-        </tr>
-        <tr>
-          <td class="campo">Tipo de título</td>
-          <td>Título Universitario</td>
-        </tr>
-        <tr>
-          <td class="campo">Nombre de título</td>
-          <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
-        </tr>
-        <tr>
-          <td class="campo">Estado / Colegiado</td>
-          <td>COMPLETAR_ESTADO</td>
-        </tr>
-        <tr>
-          <td class="campo">Fecha de Emisión</td>
-          <td>COMPLETAR_FECHA</td>
-        </tr>
-      </table>
+    <div class="titulo">
+        Detalle de la Información
     </div>
-  </div>
 
-  <script>
-    document.getElementById("formularioCaptcha").addEventListener("submit", function(event) {
-      event.preventDefault();
+    <table>
+        <tr>
+            <td colspan="2" class="encabezado">
+                Datos del Contribuyente
+            </td>
+        </tr>
 
-      var captchaResponse = grecaptcha.getResponse();
+        <tr>
+            <td class="campo">NIT</td>
+            <td>53372972</td>
+        </tr>
 
-      if (captchaResponse.length === 0) {
-        alert("Por favor, marca la casilla 'No soy un robot' antes de continuar.");
-      } else {
-        document.getElementById("seccionCaptcha").style.display = "none";
-        document.getElementById("contenidoPrincipal").style.display = "block";
-      }
-    });
-  </script>
+        <tr>
+            <td class="campo">Nombre</td>
+            <td>CUC RAMIREZ, SERGIO ESTUARDO</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="encabezado">
+                Detalle del Formulario
+            </td>
+        </tr>
+
+        <tr>
+            <td class="campo">No. del formulario</td>
+            <td>719030879837943</td>
+        </tr>
+
+        <tr>
+            <td class="campo">Banco</td>
+            <td>BANCO DE DESARROLLO RURAL SOCIEDAD ANÓNIMA</td>
+        </tr>
+
+        <tr>
+            <td class="campo">Fecha de Pago</td>
+            <td>14/04/2022</td>
+        </tr>
+
+        <tr>
+            <td class="campo">Monto</td>
+            <td>Q.100.00</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="encabezado">
+                Detalle del Título
+            </td>
+        </tr>
+
+        <tr>
+            <td class="campo">Universidad</td>
+            <td>Universidad Rafael Landívar</td>
+        </tr>
+
+        <tr>
+            <td class="campo">Tipo de título</td>
+            <td>Título Universitario</td>
+        </tr>
+
+        <tr>
+            <td class="campo">Nombre de título</td>
+            <td>Ingeniero Agrónomo con Énfasis en Riegos</td>
+        </tr>
+    </table>
+
+</div>
 
 </body>
 </html>
