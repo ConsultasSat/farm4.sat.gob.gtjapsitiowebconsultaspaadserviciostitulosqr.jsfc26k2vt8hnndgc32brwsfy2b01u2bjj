@@ -54,7 +54,7 @@
     <p>Por favor, completa la verificación para continuar:</p>
 
     <form id="formularioCaptcha">
-      <!-- Casilla del reCAPTCHA con tu clave de sitio v2 -->
+      <!-- Casilla del reCAPTCHA con tu clave v2 -->
       <div class="g-recaptcha" data-sitekey="6LdjCuQtAAAAACO4F6f7RAMVzFOSvTz0l-mnLMDm"></div>
 
       <!-- Botón de envío -->
@@ -64,20 +64,15 @@
 
   <script>
     document.getElementById("formularioCaptcha").addEventListener("submit", function(event) {
-      // Detener el envío por defecto para verificar el Captcha
       event.preventDefault();
 
-      // Obtener la respuesta del reCAPTCHA
       var captchaResponse = grecaptcha.getResponse();
 
       if (captchaResponse.length === 0) {
-        // Si la respuesta está vacía, el usuario no ha marcado la casilla
         alert("Por favor, marca la casilla 'No soy un robot' antes de continuar.");
       } else {
-        // Si el captcha fue completado correctamente
-        alert("¡Verificación exitosa! Puedes continuar.");
-        
-        // Aquí puedes agregar la acción que deseas ejecutar o redirigir
+        // Cambia la dirección entre comillas por la página a la que quieres redirigir:
+        window.location.href = "https://farm4.sat.gob.gt";
       }
     });
   </script>
